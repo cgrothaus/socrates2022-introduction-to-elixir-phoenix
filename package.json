@@ -1,0 +1,16 @@
+{
+  "name": "socrates2022-introduction-to-elixir-phoenix",
+  "version": "1.0.0",
+  "description": "Please have a look at the documentation of `asciidoctor-revealjs`: https://github.com/asciidoctor/asciidoctor-reveal.js/blob/v5.0.0-rc.1/README.adoc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Christoph Grothaus",
+  "license": "ISC",
+  "dependencies": {
+    "@asciidoctor/reveal.js": "^5.0.0-rc.1",
+    "asciidoctor": "^2.2.6"
+  }
+}
