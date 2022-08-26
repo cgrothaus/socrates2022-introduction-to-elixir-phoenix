@@ -1,0 +1,15 @@
+.reveal section.title.present {
+  padding-top: 2em;
+}
+
+.reveal section.title div.preamble {
+  margin-top: 7em;
+}
+
+.reveal section.title div.preamble p {
+  font-size: small;
+}
+
+.reveal section.title p.byline {
+  margin-top: -7em;
+}

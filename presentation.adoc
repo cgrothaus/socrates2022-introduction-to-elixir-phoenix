@@ -1,0 +1,164 @@
+= Introduction to Elixir/Phoenix
+:author: Christoph Grothaus
+:date: 2022-08-26
+:icons: font
+:imagesdir: images
+:customcss: presentation.css
+:source-highlighter: highlightjs
+:highlightjs-languages: elixir, shell
+:revealjs_history: true
+:revealjs_fragmentInURL: true
+:revealjs_controls: true
+:revealjs_controlsLayout: edges
+:revealjs_controlsTutorial: true
+:revealjs_slideNumber: c/t
+
+icon:github[] https://github.com/cgrothaus/[@cgrothaus] {nbsp}{nbsp}{nbsp}{nbsp} icon:twitter[] https://twitter.com/chrisgrothaus[@chrisgrothaus] {nbsp}{nbsp}{nbsp}{nbsp} icon:envelope[] me@cgrothaus.de {nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp} icon:building[] https://www.zweitag.de[zweitag.de]
+
+== Goals
+* High level overview of Elixir and Phoenix
+* My experience
+* Demo
+* Resources for further reading
+* NOT: explain lots of details (like syntax)
+
+=== !
+Elixir => programming language
+
+Phoenix => web framework
+
+== Elixir
+[%step]
+* functional language
+** pragmatic (not pure)
+* dynamic
+* elegant and expressive
+* compiled
+* runs on Erlang VM (BEAM)
+* high performance
+
+=== Concurrency model
+[%step]
+* Erlang concurrency model: processes
+** not OS processes, but ligthweight internal ones
+* share nothing architecture
+** good for fault tolerance
+** garbage collection is easy
+* only communication is message passing
+* process supervision
+** "Let it crash" mantra
+
+=== A tiny bit of syntax
+modules and functions (public and private)
+
+[source,elixir]
+----
+defmodule Greeter do
+  def hello(name \\ "Unknown") do
+    "Hello #{name}! The motto of the day is: #{motto()}"
+  end
+
+  defp motto, do: "The early bird catches the worm."
+end
+
+Greeter.hello("Christoph")
+Greeter.hello()
+----
+
+=== Elixir ecosystem
+[%step]
+* `mix`: build tool
+* `hex`: package manager
+* documentation: great
+
+=== Elixir use cases
+general purpose programming language
+
+[%step]
+* web development => Phoenix framework
+* embedded systems => Nerves
+* machine learning => Nx
+* living documentation => Livebook
+
+=== Installation
+_asdf all the things_
+
+[source,bash]
+----
+# on mac OS, with homebrew
+brew install asdf
+
+asdf plugin add erlang
+asdf plugin add elixir
+asdf install erlang 25.0.4
+asdf install elixir 1.14.0-rc.1-otp-25
+
+mix local.hex
+mix local.rebar
+mix archive.install hex phx_new
+----
+
+(otherwise https://elixir-lang.org/install.html)
+
+== Phoenix
+[%step]
+* web framework
+** full stack (icon:battery-full[] included)
+** resemblances to Ruby on Rails
+* developer happiness
+* performance
+
+=== Phoenix LiveView
+[%step]
+* _80% of the rich UX of SPAs (like React.js, Vue.js) with 20% of the complexity_
+* server-rendered HTML
+* partial page updates
+* declarative programming model
+
+=== Demo
+
+[source,bash]
+----
+mix phx.new --database sqlite3 blogdemo
+cd blogdemo
+git init .
+git add .
+git commit
+mix ecto.create
+# fix mix.exs w.r.t. :gettext
+mix phx.server
+
+mix phx.gen.html Blog Post posts title:string content:text
+# add some posts
+# run performance test
+
+# git revert previous scaffold
+mix ecto.reset
+mix phx.gen.live Blog Post posts title:string content:text
+# show LiveView websocket usage
+----
+
+== Resources
+
+=== Elixir
+* icon:globe[] Elixir web site: https://elixir-lang.org (great Getting started guide, and more)
+* icon:globe[] Elixir syntax cheat sheet: https://learnxinyminutes.com/docs/elixir/
+* icon:book[] Elixir in Action (Saša Jurić)
+* icon:globe[] Elixir school: https://elixirschool.com
+* icon:globe[] Exercism.io Elixir track: https://exercism.org/tracks/elixir
+
+=== Elixir ecosystem
+* icon:globe[] Hex packages: https://hex.pm/
+* icon:globe[] Hex packages documentation: https://hexdocs.pm/
+
+=== Phoenix
+* icon:globe[] Phoenix web site: https://www.phoenixframework.org/
+* icon:book[] Programming Phoenix 1.4 (Chris McCord, Bruce Tate, et al.)
+* icon:book[] Programming Phoenix LiveView (Chris McCord, Sophie DeBenedetto)
+* icon:video-camera[] Testing LiveView (course): https://www.testingliveview.com/
+
+== That's it, thank you 🙏
+
+These slides: https://bit.ly/3R6xjPU
+
+image:github-repo-url-qrcode.png[]
