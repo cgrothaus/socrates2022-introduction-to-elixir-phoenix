@@ -1,6 +1,6 @@
 # README
 
-Presentation _"Introduction to Elixir/Phoenix"_ I held at [SoCraTes conference](https://www.socrates-conference.de) 2022.
+[Presentation _"Introduction to Elixir/Phoenix"_](presentation.html) I held at [SoCraTes conference](https://www.socrates-conference.de) 2022.
 
 ## How to compile
 
